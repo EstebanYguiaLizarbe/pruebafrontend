@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>{{tituloAccion}} Empleado</h2>
+<mat-dialog-content>
+    <form [formGroup]="formEmpleado">
+        <mat-grid-list cols="1" rowHeight="90px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre Completo</mat-label>
+                    <input matInput formControlName="nombreCompleto">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Departamento</mat-label>
+                    <mat-select formControlName="idDepartamento">
+                      @for (item of listaDepartamentos; track item) {
+                        <mat-option [value]="item.idDepartamento">{{item.nombre}}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Sueldo</mat-label>
+                    <input matInput formControlName="sueldo" autocomplete="off" type="number">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha Contrato</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaContrato">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+  <button [disabled]="formEmpleado.invalid" (click)="addEditEmpleado()" mat-raised-button color="primary">{{botonAccion}}</button>
+</mat-dialog-actions>

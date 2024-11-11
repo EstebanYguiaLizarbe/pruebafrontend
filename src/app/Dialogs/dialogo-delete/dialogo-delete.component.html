@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Eliminar Empleado</h2>
+<mat-dialog-content>
+    ¿Desea Eliminar el Empleado {{dataEmpleado.nombreCompleto}}?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">No, Volver</button>
+  <button cdkFocusInitial (click)="confirmarEliminar()" mat-raised-button color="primary">Si, Eliminar</button>
+</mat-dialog-actions>
